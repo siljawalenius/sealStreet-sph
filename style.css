@@ -1,0 +1,108 @@
+@font-face{
+    font-family: "Messapia";
+    src:url(messapia-bold.woff2);
+}
+
+@keyframes show{
+    0%{
+        opacity:0;
+        transform: translate(0, 24px) scale(0.95);
+        clip-path:polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)
+    }
+    100%{
+        opacity:1;
+        transform: translate(0,0) scale(1);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)
+    }; 
+   
+}
+
+
+body{
+    background-color :#ffffff;
+    color: #333333;
+
+    font-family: Messapia;
+    text-transform: uppercase;
+    font-size:16px;
+    line-height:1.5;
+}
+
+section{
+    height: 100vh;
+    padding:120px;
+
+    display:flex;
+    align-items:center;
+    justify-content: center;
+
+    position:-webkit-sticky;
+    position:sticky;
+    top:0;
+
+    background-image: linear-gradient(120deg, #97ebd6 , #9aa6f9);
+}
+
+section.altGrade{
+    background-image: linear-gradient(30deg, #dc72ef, #fe0000)
+}
+
+figure{
+    position:absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width:100%;
+
+    text-align:center;
+    padding:120px;
+
+    clip-path: polygon(0% 0%, 100% 0, 100% 100%,  0% 100%);
+}
+
+figure img{
+    max-height:100%;
+}
+
+figcaption{
+    position:fixed;
+    top:70%;
+    left:50%;
+    color:white;
+    transform:translate(-50%, -50%);
+
+    pointer-events: none;
+
+    width:100%;
+}
+
+h1{
+    font-size: 120px;
+}
+
+p{
+    font-size: 64px;
+}
+
+
+
+@media(prefers-reduced-motion: no-preference){
+    section.in-view img{
+        animation:show 0.5s 0.6s both cubic-bezier(0.68,-0.55,0.27,1.55);
+    }
+}
+
+@media(prefers-reduced-motion: no-preference) and (min-width:900px){
+    html, body{
+        height:100%;
+        overflow:hidden;
+    }
+    main{
+        height: 100vh;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+    }
+    section{
+        scroll-snap-align: start;
+    }
+}
